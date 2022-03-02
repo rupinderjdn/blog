@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block content %}
+{% include 'main/nav.html' %}
+<div class="center-align">
+<h1>Create Article</h1>
+{% if success %}
+   <p> form submitted successfully </p>
+{% endif %}
+
+<form  method="POST">
+	{% csrf_token %}
+	<div class='row'>
+	<input type="text" name="name" placeholder="name"/>
+	<textarea name="content" placeholder="content"></textarea>
+	</div>
+	<div class="input-field col s12">
+	<select name="author" class="browser-default" >
+		{% for author in authors %}
+		<option value="{{author.id}}">
+			{{author.name}}
+		</option>
+		{% endfor %}
+	</select>
+	</div>
+	<button type="submit">SUBMIT</button>
+	<button type="reset">RESET</button>
+</form>
+
+{% endblock %}

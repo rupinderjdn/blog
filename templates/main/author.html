@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{%block content%}
+{% include 'main/nav.html' %}
+<div class="center-align">
+<h1>NAME:- {{authors.name}}</h1>
+<h4>Articles Written</h4>
+<ul>
+	{% for article in authors.article_set.all %}
+	<li>
+		<a href="{% url 'show_article' article.pk %}">
+			{{article}}
+		</a>
+	</li>
+	{% endfor %}
+</ul>
+</div>
+{% endblock %}
